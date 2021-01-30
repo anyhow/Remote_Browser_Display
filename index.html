@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>FM$ Dollar Dollar</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      /* body { font-size: 25px; font-family: Helvetica, Arial; text-align: center; margin:auto; max-width: 100%}*/
+      /* #messages{padding: 20px; background:#eee; margin: auto; text-align: left; max-width: 95%} */
+      /*form {margin: auto; padding: 10px; max-width: 90%}
+      form input {margin: auto; font-size:30px; width: 100%}
+      #delete {padding: 20px; background: #eef; display: inline-block; width: 35%}
+      #submit {padding: 20px; background: #ee0; display: inline-block; width: 35%}
+      .button {padding: 25px; background: #ee0; display: inline-block; margin: auto; margin-top: 10px; margin-bottom: 5px;}
+      #top {width: 90%}
+      #left {width: 45%}
+      #right {width: 45%}
+      #down {width: 90%}*/
+
+      * { box-sizing: border-box; }
+      body { max-width: 800px; width: 100%; padding: 0px 1em; margin: 1em auto; font-size: 1.25em; }
+      .nes-container > * { margin-top: 1em; margin-bottom: 1em; }
+      body > * { margin-bottom: 1em; margin-top: 1em; }
+
+    </style>
+  </head>
+  <body>
+    <h1>Hello!</h1>
+    <div class="nes-container with-title">
+      <p class="title">DIE STILLE LAUFSCHRIFT</p>
+
+      <div class="nes-field">
+        <div id="messages"></div>
+        <label for="name_field">What's up?</label>
+        <input type="text" id="m" class="nes-input">
+      </div>
+
+      <button type="button" class="nes-btn is-primary" id="submit">RESUBMIT ALL</button>
+      <button type="button" class="nes-btn is-error" id="delete">DELETE</button>
+    </div>
+
+    <div class="nes-container with-title">
+      <p class="title">MOOD OF THE DAY</p>
+      <button type="button" class="nes-btn is-primary">Bored</button>
+      <button type="button" class="nes-btn is-success">Euphoric</button>
+      <button type="button" class="nes-btn is-warning">Summer</button>
+      <button type="button" class="nes-btn is-error">Angry</button>
+      <button type="button" class="nes-btn is-disabled">Rainy</button>
+    </div>
+
+    <h4>Did I here you say there's a party?</h4>
+    <div class="nes-container is-dark with-title">
+      <p class="title">THE PARTYBUTTON</p>
+      <button type="button" class="nes-btn is-error" id="go" id="partyon">PARTY ON</button>
+      <button type="button" class="nes-btn is-success" id="go" id="partyoff">PARTY OFF</button>
+    </div>
+
+    <div class="nes-container is-dark with-title">
+      <p class="title">MITARBEITERIN DES TAGES</p>
+      <div class="nes-field is-inline">
+        <input type="text" id="inline_field" class="nes-input is-success" placeholder="MitarbeiterIn des Tages">
+      </div>
+    </div>
+
+
+
+    <div id="messages"></div>
+    <form action="">
+      <input id="m" autocomplete="off" />
+    </form>
+    <div id="submit">SUBMIT</div>
+    <div id="delete">DELETE</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+  $(function () {
+    var socket = io();
+    $('#m').keypress( e => {
+      socket.emit('chat message', e.key);
+      });
+    $('#submit').click(function(e){
+      e.preventDefault(); // prevents page reloading
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+    $('#delete').click( i => {
+      socket.emit('delete message', i);
+    });
+    $('#partyon').click( i => {
+      socket.emit('partyon', i);
+    });
+    $('#partyoff').click( i => {
+      socket.emit('partyoff', i);
+    });
+    $('#left').click(function(){
+      socket.emit('go left');
+    });
+    $('#right').click(function(){
+      socket.emit('go right');
+    });
+    $('#top').click(function(){
+      socket.emit('go top');
+    });
+    $('#down').click(function(){
+      socket.emit('go down');
+    });
+    socket.on('chat message', function(msg){
+      $('#messages').append(msg);
+    });
+    socket.on('delete message', function(){
+      $('#messages').html("");
+    })
+  });
+</script>
+
+  </body>
+</html>
