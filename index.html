@@ -80,11 +80,11 @@
     $('#submit').click(function(e){
       e.preventDefault(); // prevents page reloading
       socket.emit('chat message', $('#m').val());
-      $('#m').val('');
       return false;
     });
     $('#delete').click( i => {
       socket.emit('delete message', i);
+      $('#m').val('');
     });
     $('#partyon').click( i => {
       socket.emit('partyon', i);
