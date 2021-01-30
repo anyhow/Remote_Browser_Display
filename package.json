@@ -1,0 +1,14 @@
+{
+  "name": "FM4 Screen App",
+  "version": "0.0.1",
+  "description": "App to feed the screens",
+  "author": "Claus Diwisch <claus.diwisch@pm.me>",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
