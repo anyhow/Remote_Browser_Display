@@ -71,14 +71,14 @@ body {margin: 0; padding: 0; background-color: powderblue; font-size: 26px; font
 
         socket.on('partyon', function(){
           $(".panel1").html();
-          $(".panel2").html(<video src="screen/video_panel2_v2.webm" autoplay muted loop style="height:32px;"></video>);
+          $(".panel2").html('<video src="screen/video_panel2_v2.webm" autoplay muted loop style="height:32px;"></video>');
           $(".panel3").html();
           $(".panel4").html();
           $(".panel5").html();
         });
         socket.on('partyoff', function(){
           $(".panel1").html();
-          $(".panel2").html(<video src="screen/video_panel2_v1.webm" autoplay muted loop style="height:32px;"></video>);
+          $(".panel2").html('<video src="screen/video_panel2_v1.webm" autoplay muted loop style="height:32px;"></video>');
           $(".panel3").html();
           $(".panel4").html();
           $(".panel5").html();

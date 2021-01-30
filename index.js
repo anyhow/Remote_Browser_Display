@@ -6,8 +6,8 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('nes.min.css', (req, res) => {
-  res.sendFile(__dirname + 'nes.min.css');
+app.get('/nes.min.css', (req, res) => {
+  res.sendFile(__dirname + '/nes.min.css');
 });
 
 app.get('/screen', (req, res) => {
@@ -54,6 +54,6 @@ io.on('connection', (socket) => {
   });
 });
 
-http.listen(80, () => {
-  console.log('listening on *:80');
+http.listen(3060, () => {
+  console.log('listening on *:3060');
 });
