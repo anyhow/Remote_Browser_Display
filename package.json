@@ -1,6 +1,6 @@
 {
   "name": "FM4Screen",
-  "version": "0.0.1",
+  "version": "0.2",
   "description": "App to feed the screens",
   "author": "Claus Diwisch <claus.diwisch@pm.me>",
   "main": "index.js",
