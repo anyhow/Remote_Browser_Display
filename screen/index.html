@@ -30,7 +30,7 @@ body {margin: 0; padding: 0; background-color: powderblue; font-size: 26px; font
 </head>
 
 <body>
-    <div class="panel1"><!--<video src="screen/video_panel1_v2.webm" autoplay muted loop style="height:32px;"></video>--><div id="messages"></div></div>
+    <div class="panel1"><div id="messages"></div></div>
     <div class="panel2"><video src="screen/video_panel2_v1.webm" autoplay muted loop style="height:32px;"></video></div>
     <div class="panel3"></div>
     <div class="panel4"></div>
@@ -45,6 +45,7 @@ body {margin: 0; padding: 0; background-color: powderblue; font-size: 26px; font
       var text1 = `FM4 ${data.title}<br>`
       var text2 = `Song: ${data.item.title}<br>`
       var text3 = `${data.item.interpreter} <br> ${data.item.title}`
+      var text4 = `${data.subtitle}`
 
         $(".panel1").html();
         $(".panel2").html();
@@ -71,14 +72,14 @@ body {margin: 0; padding: 0; background-color: powderblue; font-size: 26px; font
 
         socket.on('partyon', function(){
           $(".panel1").html();
-          $(".panel2").html('<video src="screen/video_panel2_v2.webm" autoplay muted loop style="height:32px;"></video>');
+          $(".panel2").html('test');
           $(".panel3").html();
           $(".panel4").html();
           $(".panel5").html();
         });
         socket.on('partyoff', function(){
           $(".panel1").html();
-          $(".panel2").html('<video src="screen/video_panel2_v1.webm" autoplay muted loop style="height:32px;"></video>');
+          $(".panel2").html('');
           $(".panel3").html();
           $(".panel4").html();
           $(".panel5").html();
