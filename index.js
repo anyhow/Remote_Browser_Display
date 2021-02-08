@@ -26,6 +26,18 @@ app.get('/screen/video_panel5_v1.webm', (req, res) => {
   res.sendFile(__dirname + '/screen/video_panel5_v1.webm');
 });
 
+app.get('/screen/panel2_v1.mp4', (req, res) => {
+  res.sendFile(__dirname + '/screen/panel2_v1.mp4');
+});
+
+app.get('/screen/panel3_v1.mp4', (req, res) => {
+  res.sendFile(__dirname + '/screen/panel3_v1.mp4');
+});
+
+app.get('/screen/panel4_v1.mp4', (req, res) => {
+  res.sendFile(__dirname + '/screen/panel4_v1.mp4');
+});
+
 
 io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
