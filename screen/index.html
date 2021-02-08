@@ -20,6 +20,7 @@ body {margin: 0; padding: 0; background-color: powderblue; font-size: 26px; font
 .panel2 {height: 32px; width: 640px; background-color: red;}
 .panel3 {height: 32px; width: 512px; background-color: green; display: block;}
 .panel4 {height: 32px; width: 512px; background-color: yellow;}
+.panel4 video {position: fixed; top: 95px; z-index: -100;}
 .panel5 {height: 32px; width: 384px;}
 .panel5 video {position: fixed; top: 127px; z-index: -100;}
 .panel5 #song {width: 384px; text-align: center; font-size: 14px;}
@@ -33,7 +34,7 @@ body {margin: 0; padding: 0; background-color: powderblue; font-size: 26px; font
     <div class="panel1"><div id="messages"></div></div>
     <div class="panel2"><video src="screen/panel2_v1.mp4" autoplay muted loop style="height:32px;"></video></div>
     <div class="panel3"><video src="screen/panel3_v1.mp4" autoplay muted loop style="height:32px;"></video></div>
-    <div class="panel4"><video src="screen/panel4_v1.mp4" autoplay muted loop style="height:32px;"></video></div>
+    <div class="panel4"><video src="screen/panel4_v1.mp4" autoplay muted loop style="height:32px;"></video><div id=show></div></div>
     <div class="panel5"><video src="screen/video_panel5_v1.webm" autoplay muted loop style="height:32px;"></video><div id=song></div></div>
     <canvas id="canvas"></canvas>
 
@@ -50,7 +51,7 @@ body {margin: 0; padding: 0; background-color: powderblue; font-size: 26px; font
         $(".panel1").html();
         $(".panel2").html();
         $(".panel3").html();
-	      $(".panel4").html(text1);
+	      $("#show").html(text1);
 	      $(".panel5").html();
         $("#song").html(text3);
 
