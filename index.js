@@ -43,6 +43,9 @@ io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
+  socket.on('chat message part', (msg) => {
+    io.emit('chat message part', msg);
+  });
   socket.on('partyon', (msg) => {
     io.emit('partyon', msg);
   });

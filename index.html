@@ -72,7 +72,7 @@
   $(function () {
     var socket = io();
     $('#m').keypress( e => {
-      socket.emit('chat message', e.key);
+      socket.emit('chat message part', e.key);
       });
     $('#submit').click(function(e){
       e.preventDefault(); // prevents page reloading
@@ -89,6 +89,9 @@
       $('#messages').html("");
       $('#messages').append(msg);
       $('#m').val('');
+    });
+    socket.on('chat message part', function(msg){
+      $('#messages').append(msg);
     })
   });
 </script>
