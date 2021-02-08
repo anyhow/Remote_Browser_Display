@@ -31,9 +31,6 @@ io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
-  socket.on('delete message', (msg) => {
-    io.emit('delete message', msg);
-  });
   socket.on('partyon', (msg) => {
     io.emit('partyon', msg);
   });

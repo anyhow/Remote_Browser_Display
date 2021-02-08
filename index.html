@@ -32,7 +32,7 @@
   <body>
     <h1>Hello!</h1>
     <div class="nes-container with-title">
-      <p class="title">DIE STILLE LAUFSCHRIFT</p>
+      <p class="title">DIE FM4 LAUFSCHRIFT</p>
 
       <div class="nes-field">
         <div id="messages"></div>
@@ -41,9 +41,8 @@
       </div>
 
       <button type="button" class="nes-btn is-primary" id="submit">SUBMIT</button>
-      <button type="button" class="nes-btn is-error" id="delete">DELETE</button>
     </div>
-
+<!--
     <div class="nes-container with-title">
       <p class="title">MOOD OF THE DAY</p>
       <button type="button" class="nes-btn is-success">Good</button>
@@ -64,7 +63,7 @@
         <input type="text" id="inline_field" class="nes-input is-success" placeholder="MitarbeiterIn des Tages">
       </div>
     </div>
-
+-->
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -80,10 +79,6 @@
       socket.emit('chat message', $('#m').val());
       return false;
     });
-    $('#delete').click( i => {
-      socket.emit('delete message', i);
-      $('#m').val('');
-    });
     $('#partyon').click( i => {
       socket.emit('partyon', i);
     });
@@ -91,10 +86,9 @@
       socket.emit('partyoff', i);
     });
     socket.on('chat message', function(msg){
-      $('#messages').append(msg);
-    });
-    socket.on('delete message', function(){
       $('#messages').html("");
+      $('#messages').append(msg);
+      $('#m').val('');
     })
   });
 </script>

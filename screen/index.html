@@ -64,10 +64,8 @@ body {margin: 0; padding: 0; background-color: powderblue; font-size: 26px; font
       $(function () {
         var socket = io();
         socket.on('chat message', function(msg){
-          $('#messages').append(msg);
-        });
-        socket.on('delete message', function(){
           $('#messages').html("");
+          $('#messages').append(msg);
         });
 
         socket.on('partyon', function(){
